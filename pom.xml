@@ -51,11 +51,6 @@
             <version>2.3.1.GA</version>
         </dependency>
 
-        <dependency>
-            <groupId>org.jboss.resteasy</groupId>
-            <artifactId>resteasy-multipart-provider</artifactId>
-            <version>3.1.4.Final</version>
-        </dependency>
 
         <dependency>
             <groupId>org.codehaus.enunciate</groupId>
@@ -63,6 +58,14 @@
             <version>1.26.2</version>
         </dependency>
 
+
+        <!--Denna behövs för MessageBodyWriter!!!-->
+
+        <dependency>
+            <groupId>org.jboss.resteasy</groupId>
+            <artifactId>resteasy-jackson-provider</artifactId>
+            <version>3.1.4.Final</version>
+        </dependency>
   </dependencies>
 
     <build>
