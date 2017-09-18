@@ -20,4 +20,9 @@
     </servlet-mapping>
 
 
+    <context-param>
+        <param-name>imagedirectory</param-name>
+        <param-value>/home/anders/images</param-value>
+    </context-param>
+
 </web-app>

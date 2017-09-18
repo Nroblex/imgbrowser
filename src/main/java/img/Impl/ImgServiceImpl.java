@@ -7,7 +7,7 @@ import img.ResponseMessage;
 import javax.ws.rs.core.Response;
 
 
-public class ImgServiceImpl implements ImgService {
+public class ImgServiceImpl extends Images implements ImgService {
 
     @Override
     public PingResponse ping() {
@@ -20,4 +20,12 @@ public class ImgServiceImpl implements ImgService {
         return Response.status(200).entity(new PingResponse("OK!")).build();
 
     }
+
+    @Override
+    public ResponseMessage viewConfiguration(){
+
+        return new PingResponse(getImagePath());
+
+    }
+
 }

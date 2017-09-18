@@ -20,4 +20,9 @@ public interface ImgService {
     @Path("/ping2")
     public Response ping2();
 
+
+    @GET
+    @Path("/configuration")
+    public ResponseMessage viewConfiguration();
+
 }
