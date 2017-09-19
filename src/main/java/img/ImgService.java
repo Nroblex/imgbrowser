@@ -25,4 +25,8 @@ public interface ImgService {
     @Path("/configuration")
     public ResponseMessage viewConfiguration();
 
+
+    
+
+
 }
