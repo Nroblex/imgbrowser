@@ -4,6 +4,7 @@ import img.ResponseMessage;
 
 import java.io.*;
 import java.nio.file.Files;
+import java.util.Base64;
 import java.util.Properties;
 
 
@@ -40,6 +41,23 @@ public class Images {
 
         return "ContextPath: " + imagePath;
     }
+
+    public byte[] getImage(){
+
+
+        File f = new File("/repository/imgs/svensk-sommar.jpg");
+
+        try {
+
+            return Files.readAllBytes(f.toPath());
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
 
     private void checkIfFileExists() {
 

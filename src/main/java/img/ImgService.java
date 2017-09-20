@@ -26,7 +26,9 @@ public interface ImgService {
     public ResponseMessage viewConfiguration();
 
 
-    
+    @GET
+    @Path("/picture")
+    public byte[] getAnImage();
 
 
 }

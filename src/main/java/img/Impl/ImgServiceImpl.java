@@ -28,4 +28,11 @@ public class ImgServiceImpl extends Images implements ImgService {
 
     }
 
+    @Override
+    public byte[] getAnImage() {
+
+        return getImage();
+
+    }
+
 }
