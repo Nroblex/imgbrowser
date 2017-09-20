@@ -1,10 +1,11 @@
 package img.Impl;
 
-import img.ResponseMessage;
+import img.Impl.response.ImageResponse;
+import img.Impl.response.ImageResponseMessage;
+import img.Impl.response.ResponseType;
 
 import java.io.*;
 import java.nio.file.Files;
-import java.util.Base64;
 import java.util.Properties;
 
 
@@ -42,11 +43,20 @@ public class Images {
         return "ContextPath: " + imagePath;
     }
 
-    public byte[] getImage(){
+    public ImageResponseMessage getImageResponseMessage(){
+        byte[] imgData = getImage();
+        if (imgData != null){
+            return new ImageResponse(ResponseType.RESPONSE_SUCCESS, imgData);
+        } else {
+            return new ImageResponse(ResponseType.RESPONSE_FAILURE, null);
+        }
+    }
+
+    private byte[] getImage(){
 
 
-        File f = new File("/repository/imgs/svensk-sommar.jpg");
-
+        //File f = new File("/repository/imgs/svensk-sommar.jpg");
+        File f = new File("C:\\Users\\SEAS19062\\Pictures\\Clown.jpg");
         try {
 
             return Files.readAllBytes(f.toPath());

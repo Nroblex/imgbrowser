@@ -1,8 +1,10 @@
 package img.Impl;
 
 import img.ImgService;
-import img.PingResponse;
-import img.ResponseMessage;
+import img.Impl.response.ImageResponse;
+import img.Impl.response.ImageResponseMessage;
+import img.Impl.response.PingResponse;
+import img.Impl.response.ResponseMessage;
 
 import javax.ws.rs.core.Response;
 
@@ -29,9 +31,9 @@ public class ImgServiceImpl extends Images implements ImgService {
     }
 
     @Override
-    public byte[] getAnImage() {
+    public ImageResponseMessage getAnImage() {
 
-        return getImage();
+        return getImageResponseMessage();
 
     }
 

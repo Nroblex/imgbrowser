@@ -1,4 +1,4 @@
-package img;
+package img.Impl.response;
 
 import org.codehaus.enunciate.json.JsonRootType;
 
