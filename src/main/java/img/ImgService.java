@@ -1,10 +1,7 @@
 package img;
 
 
-import img.Impl.response.ImageResponse;
-import img.Impl.response.ImageResponseMessage;
-import img.Impl.response.PingResponse;
-import img.Impl.response.ResponseMessage;
+import img.Impl.response.*;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -35,5 +32,12 @@ public interface ImgService {
     @Path("/picture")
     public ImageResponseMessage getAnImage();
 
+    @GET
+    @Path("/image")
+    public byte[] getImageData();
+
+    @GET
+    @Path("/folder")
+    public FolderResponseMessage getFolders();
 
 }

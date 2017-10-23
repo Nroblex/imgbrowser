@@ -1,10 +1,7 @@
 package img.Impl;
 
 import img.ImgService;
-import img.Impl.response.ImageResponse;
-import img.Impl.response.ImageResponseMessage;
-import img.Impl.response.PingResponse;
-import img.Impl.response.ResponseMessage;
+import img.Impl.response.*;
 
 import javax.ws.rs.core.Response;
 
@@ -36,5 +33,18 @@ public class ImgServiceImpl extends Images implements ImgService {
         return getImageResponseMessage();
 
     }
+
+    @Override
+    public byte[] getImageData() {
+        return new byte[0];
+    }
+
+    @Override
+    public FolderResponseMessage getFolders() {
+
+        return getFolderInformation();
+    }
+
+
 
 }
