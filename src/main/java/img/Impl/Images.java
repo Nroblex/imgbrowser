@@ -7,13 +7,19 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import java.io.*;
 import java.nio.file.Files;
+import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
+import java.util.Random;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 
 public abstract class Images {
 
     private String imagePath = "";
-
+    private Pattern JPG_ENTRY_PATTERN = Pattern.compile("^.*logic.(\\w+)\\.jpg$");
     public String getImagePath()  {
 
         // Get the base naming context
@@ -57,6 +63,29 @@ public abstract class Images {
 
         String initDir = getImagePath();
 
+        File initDirectory = new File(initDir);
+
+        List<File> imageFiles = new ArrayList<>();
+
+        File[] files = initDirectory.listFiles();
+        for (File f : files){
+            if (f.isFile()){
+                imageFiles.add(f);
+            }
+        }
+
+        Random rnd = new Random();
+
+        if (imageFiles.size()> 0){
+            File pickedFile = imageFiles.get(rnd.nextInt(imageFiles.size()));
+
+            try {
+                return Files.readAllBytes(pickedFile.toPath());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }
 
         return null;
     }

@@ -36,7 +36,7 @@ public class ImgServiceImpl extends Images implements ImgService {
 
     @Override
     public byte[] getImageData() {
-        return new byte[0];
+        return getRandomImageData();
     }
 
     @Override
