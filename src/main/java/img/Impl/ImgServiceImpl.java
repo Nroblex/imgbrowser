@@ -11,7 +11,7 @@ public class ImgServiceImpl implements ImgService {
 
     @Override
     public PingResponse ping() {
-        return new PingResponse("This is a successmessage!");
+        return new PingResponse("This is a successmessage, ping was success!!");
     }
 
     @Override
