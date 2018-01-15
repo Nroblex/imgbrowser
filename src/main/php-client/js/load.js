@@ -23,8 +23,17 @@ function randomImage(){
 	loadImage(function(response){
 		
 		var jsonReply = JSON.parse(response);
-		var pp = jsonReply[0].imgArray;
-		var x = "1";
+		
+		var canv = document.createElement('canvas');
+		var ctx = canv.getContext('2d');
+		var img = document.getElementById('myImage');
+		ctx.drawImage(img, 10, 10);
+		canv.putImageData(jsonReply.imgArray, 10, 10);
+		
+		
+		
+		document.getElementById('myImage').src = "data:image/jpg;base64, " + jsonReply.imgArray;
+		
 	});
 	
 }
