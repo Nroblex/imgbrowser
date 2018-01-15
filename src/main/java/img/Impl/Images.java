@@ -8,10 +8,7 @@ import javax.naming.NamingException;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Properties;
-import java.util.Random;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -36,8 +33,10 @@ public abstract class Images {
 
     }
 
+    /*We get a response as bytearray*/
     public ImageResponseMessage getImageResponseMessage(){
-        byte[] imgData = getImage();
+        //byte[] imgData = getImage();
+        byte[] imgData = getRandomImageDataBase64();
         if (imgData != null){
             return new ImageResponse(ResponseType.RESPONSE_SUCCESS, imgData);
         } else {
@@ -59,6 +58,36 @@ public abstract class Images {
         return null;
     }
 
+    public byte[] getRandomImageDataBase64(){
+        String initDir = getImagePath();
+
+        File initDirectory = new File(initDir);
+
+        List<File> imageFiles = new ArrayList<>();
+
+        File[] files = initDirectory.listFiles();
+        for (File f : files){
+            if (f.isFile()){
+                imageFiles.add(f);
+            }
+        }
+
+        Random rnd = new Random();
+
+        if (imageFiles.size()> 0){
+            File pickedFile = imageFiles.get(rnd.nextInt(imageFiles.size()));
+            try {
+                byte[] returnBytes = Files.readAllBytes(pickedFile.toPath());
+
+                return Base64.getEncoder().encode(returnBytes);
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }
+        return null;
+    }
     public byte[] getRandomImageData(){
 
         String initDir = getImagePath();
