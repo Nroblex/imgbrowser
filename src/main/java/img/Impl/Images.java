@@ -6,8 +6,8 @@ import javax.naming.Context;
 import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Path;
+import java.nio.file.*;
+import java.nio.file.attribute.BasicFileAttributes;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -121,12 +121,13 @@ public abstract class Images {
 
     public FolderResponseMessage getFolderInformation() {
 
-        FolderInfo info = new FolderInfo();
-        info.setFolderCount(10);
-        info.setImageCount(1029);
-        info.setRootDirectory(getImagePath());
+        int dirCount = 0;
 
-        return new FolderResponse(ResponseType.RESPONSE_SUCCESS, info);
+        Folders folders = new Folders(getImagePath());
+        FolderInfo folderInfo = folders.getFolderInformation();
+
+
+        return new FolderResponse(ResponseType.RESPONSE_SUCCESS, folderInfo);
 
 
     }
